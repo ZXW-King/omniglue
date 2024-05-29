@@ -19,9 +19,8 @@ from typing import Optional, Tuple
 
 import cv2
 import numpy as np
-from omniglue import utils
+from src.omniglue import utils
 import tensorflow.compat.v1 as tf1
-
 
 class SuperPointExtract:
   """Class to initialize SuperPoint model and extract features from an image.
@@ -33,14 +32,14 @@ class SuperPointExtract:
     model_path: string, filepath to saved SuperPoint TF1 model weights.
   """
 
-  def __init__(self, model_path: str):
+  def __init__(self, model_path: str,topk=1024):
     self.model_path = model_path
     self._graph = tf1.Graph()
     self._sess = tf1.Session(graph=self._graph)
     tf1.saved_model.loader.load(
         self._sess, [tf1.saved_model.tag_constants.SERVING], model_path
     )
-
+    self.topk = topk
   def __call__(
       self,
       image,
@@ -51,7 +50,7 @@ class SuperPointExtract:
     return self.compute(
         image,
         segmentation_mask=segmentation_mask,
-        num_features=num_features,
+        num_features=self.topk,
         pad_random_features=pad_random_features,
     )
 

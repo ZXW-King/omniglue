@@ -1,59 +1,4 @@
-<div align="center">
-
-# \[CVPR'24\] Code release for OmniGlue
-
-<p align="center">
-    <a href="https://hwjiang1510.github.io/">Hanwen Jiang</a>,
-    <a href="https://scholar.google.com/citations?user=jgSItF4AAAAJ">Arjun Karpur</a>,
-    <a href="https://scholar.google.com/citations?user=7EeSOcgAAAAJ">Bingyi Cao</a>,
-    <a href="https://www.cs.utexas.edu/~huangqx/">Qixing Huang</a>,
-    <a href="https://andrefaraujo.github.io/">Andre Araujo</a>
-</p>
-
-</div>
-
---------------------------------------------------------------------------------
-
-<div align="center">
-    <a href="https://hwjiang1510.github.io/OmniGlue/"><strong>Project Page</strong></a> |
-    <a href="https://arxiv.org/abs/2405.12979"><strong>Paper</strong></a> |
-    <a href="#installation"><strong>Usage</strong></a> |
-    <a href="https://huggingface.co/spaces/qubvel-hf/omniglue"><strong>Demo</strong></a>
-</div>
-
-<br>
-
-<div align="center">
-
-[![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/resolve/main/open-in-hf-spaces-sm.svg)](https://huggingface.co/spaces/qubvel-hf/omniglue)
-
-</div>
-
-<br>
-
-Official code release for the CVPR 2024 paper: **OmniGlue: Generalizable Feature
-Matching with Foundation Model Guidance**.
-
-![og_diagram.png](res/og_diagram.png "og_diagram.png")
-
-**Abstract:** The image matching field has been witnessing a continuous
-emergence of novel learnable feature matching techniques, with ever-improving
-performance on conventional benchmarks. However, our investigation shows that
-despite these gains, their potential for real-world applications is restricted
-by their limited generalization capabilities to novel image domains. In this
-paper, we introduce OmniGlue, the first learnable image matcher that is designed
-with generalization as a core principle. OmniGlue leverages broad knowledge from
-a vision foundation model to guide the feature matching process, boosting
-generalization to domains not seen at training time. Additionally, we propose a
-novel keypoint position-guided attention mechanism which disentangles spatial
-and appearance information, leading to enhanced matching descriptors. We perform
-comprehensive experiments on a suite of 6 datasets with varied image domains,
-including scene-level, object-centric and aerial images. OmniGlue’s novel
-components lead to relative gains on unseen domains of 18.8% with respect to a
-directly comparable reference model, while also outperforming the recent
-LightGlue method by 10.1% relatively.
-
-
+# 配置说明
 ## Installation
 
 First, use pip to install `omniglue`:
@@ -64,7 +9,7 @@ conda activate omniglue
 
 git clone https://github.com/google-research/omniglue.git
 cd omniglue
-pip install -e .
+pip install -r requirements.txt
 ```
 
 Then, download the following models to `./models/`
@@ -131,26 +76,3 @@ python demo.py ./res/demo1.jpg ./res/demo2.jpg
 
 Expected output:
 ![demo_output.png](res/demo_output.png "demo_output.png")
-
-
-## Repo TODOs
-
-- ~~Provide `demo.py` example usage script.~~
-- ~~Add to image matching webui~~ (credit: [@Vincentqyw](https://github.com/Vincentqyw))
-- Support matching for pre-extracted features.
-- Release eval pipelines for in-domain (MegaDepth).
-- Release eval pipelines for all out-of-domain datasets.
-
-## BibTex
-```
-@inproceedings{jiang2024Omniglue,
-   title={OmniGlue: Generalizable Feature Matching with Foundation Model Guidance},
-   author={Jiang, Hanwen and Karpur, Arjun and Cao, Bingyi and Huang, Qixing and Araujo, Andre},
-   booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-   year={2024},
-}
-```
-
---------------------------------------------------------------------------------
-
-This is not an officially supported Google product.

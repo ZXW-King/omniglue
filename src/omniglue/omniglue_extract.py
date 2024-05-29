@@ -15,9 +15,9 @@
 """Wrapper for performing OmniGlue inference, plus (optionally) SP/DINO."""
 
 import numpy as np
-from omniglue import dino_extract
-from omniglue import superpoint_extract
-from omniglue import utils
+from src.omniglue import dino_extract
+from src.omniglue import superpoint_extract
+from src.omniglue import utils
 import tensorflow as tf
 
 DINO_FEATURE_DIM = 768
@@ -30,12 +30,12 @@ class OmniGlue:
   def __init__(
       self,
       og_export: str,
-      sp_export: str | None = None,
-      dino_export: str | None = None,
+      sp_export: str,
+      dino_export: str,
   ) -> None:
     self.matcher = tf.saved_model.load(og_export)
     if sp_export is not None:
-      self.sp_extract = superpoint_extract.SuperPointExtract(sp_export)
+      self.sp_extract = superpoint_extract.SuperPointExtract(sp_export,topk=1024)
     if dino_export is not None:
       self.dino_extract = dino_extract.DINOExtract(dino_export, feature_layer=1)
 
