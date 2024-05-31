@@ -40,8 +40,10 @@ def main(argv) -> None:
 
     # Load images.
     print("> Loading images...")
-    image0 = np.array(Image.open(argv[1]))
-    image1 = np.array(Image.open(argv[2]))
+    # image0 = np.array(Image.open(argv[1]))
+    # image1 = np.array(Image.open(argv[2]))
+    image0 = cv2.imread(argv[1])
+    image1 = cv2.imread(argv[2])
 
     # Load models.
     print("> Loading OmniGlue (and its submodules: SuperPoint & DINOv2)...")
@@ -77,6 +79,8 @@ def main(argv) -> None:
     # Visualize.
     print("> Visualizing matches...")
     viz = utils.visualize_matches(
+        argv[1],
+        argv[2],
         image0,
         image1,
         match_kp0,
@@ -92,10 +96,7 @@ def main(argv) -> None:
     # plt.imshow(viz)
     # plt.show()
     # plt.imsave("./demo_output.png", viz)
-    viz = viz[...,::-1]
-    cv2.imshow('res',viz)
-    cv2.waitKey()
-    cv2.destroyAllWindows()
+    # viz = viz[...,::-1]
     print("> \tSaved visualization to ./demo_output.png")
 
 

@@ -32,10 +32,11 @@ class OmniGlue:
       og_export: str,
       sp_export: str,
       dino_export: str,
+      topk=1024,
   ) -> None:
     self.matcher = tf.saved_model.load(og_export)
     if sp_export is not None:
-      self.sp_extract = superpoint_extract.SuperPointExtract(sp_export,topk=1024)
+      self.sp_extract = superpoint_extract.SuperPointExtract(sp_export,topk=topk)
     if dino_export is not None:
       self.dino_extract = dino_extract.DINOExtract(dino_export, feature_layer=1)
 

@@ -1,0 +1,26 @@
+{
+  "image_cate": "test_darker_uchar_norm" ,
+  "valid_K": 500,
+  "strategy":"topK",
+  "model_type": "onnx" ,
+  "num_layer": 9,
+  "lightglue_path": "/media/xin/work/github_pro/omniglue/lightglue_test/weights/lightglue_0219_topK_500_num_layer_9.onnx",
+  "npu_matches": "lightglue_test/data/npu_matches/test_darker_uchar/",
+  "onnx_matches": "lightglue_test/data/onnx_matches/test_darker_uchar/",
+  "additional_flag": true,
+  "res_save_path": "/media/xin/work/github_pro/omniglue/comparison_test/save_res/test_difficult",
+  "image_lists":[
+       ["lightglue_test/data/images/test_difficult/1000000023866152064.png","lightglue_test/data/images/test_difficult/1000000024744673920.png"]
+  ,    ["lightglue_test/data/images/test_difficult/1000000026423329920.png","lightglue_test/data/images/test_difficult/1000000026740082048.png"]
+  ,    ["lightglue_test/data/images/test_difficult/1000000103749156992.png","lightglue_test/data/images/test_difficult/1000000104148996992.png"]
+  ],
+  "help": [
+    "image_cate : easy, darker, difficult",
+    "valid_K : int",
+    "strategy : topK, random, sequence as 1,3,5,7 ",
+    "model_type : onnx(GPU), npu. if npu, npu_nb2 for num_layers=2, npu_nb3 for num_layers=3",
+    "num_layer : 3,5,7,9"
+  ]
+}
+
+

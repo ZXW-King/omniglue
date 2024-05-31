@@ -143,7 +143,8 @@ class SuperPointExtract:
 
   def _preprocess_image(self, image):
     """Converts image to grayscale and normalizes values for model input."""
-    image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+    if len(image.shape) > 2:
+      image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     image = np.expand_dims(image, 2)
     image = image.astype(np.float32)
     image = image / 255.0
